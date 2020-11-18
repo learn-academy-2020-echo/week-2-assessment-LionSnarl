@@ -24,38 +24,41 @@ HINT: Check the console in the browser developer tools for errors. -->
 
 
 
-      class App extends React.Component{
-        constructor(props){
-          super(props)
-          this.state = {
-            moods: ["😃", "😴", "😍", "🥺", "😡", "🤓", "🤪"],
-            currentMood: ""
-          }
+    class App extends React.Component{
+      constructor(props){
+        super(props)
+        this.state = {
+          moods: ["😃", "😴", "😍", "🥺", "😡", "🤓", "🤪"],
+          currentMood: ""
         }
-
-        handleMoodOptions = () => {
-          let randomIndex = Math.floor(Math.random() * this.state.moods.length )
-          this.setState({ currentMood: moods[randomIndex] })
-        }
-
-        render(){
-          return(
-              <h1>Welcome to the Mood Meter App</h1>
-
-              <h3>Mood Options:</h3>
-
-              <div style={{ fontSize: "40px", height: "50px"}}>
-                { this.state.currentMood }
-              </div>
-
-              <button onClick={ handleMoodOptions }>
-                Click Here For Next Mood option
-              </button>
-
-          )
-        }
+        this.handleMoodOptions = this.handleMoodOptions.bind(this)
       }
 
+     handleMoodOptions() {
+
+      let randomIndex = Math.floor(Math.random() * this.state.moods.length )
+        this.setState({ currentMood: this.state.moods[randomIndex] })
+      }
+
+      render(){
+
+        return(
+        <div>
+            <h1>Welcome to the Mood Meter App</h1>
+
+            <h3>Mood Options:</h3>
+
+            <div style={{ fontSize: "40px", height: "50px"}}>
+              { this.state.currentMood }
+            </div>
+
+            <button onClick={ this.handleMoodOptions }>
+              Click Here For Next Mood option
+            </button>
+          </div>
+        )
+      }
+    }
 
 
 
